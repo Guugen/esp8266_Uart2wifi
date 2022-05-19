@@ -20,4 +20,6 @@ data_pool* data_pool_init(int l){
         printf("内存分配失败");
         return NULL;
     }
+
+    
 }
