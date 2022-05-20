@@ -18,7 +18,7 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
-
+#include "../head/station.h"
 #include "driver/uart.h"
 
 /**
@@ -60,6 +60,10 @@ static void echo_task()
 }
 
 void app_main()
-{
+{	
     xTaskCreate(echo_task, "uart_echo_task", 1024, NULL, 10, NULL);
+    ESP_ERROR_CHECK(nvs_flash_init());
+
+    ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
+    wifi_init_sta();   
 }
