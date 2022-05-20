@@ -1,4 +1,10 @@
-# _UART Echo Example_
+# write by guugen
+esp8266 wifi station can not connect 5.0Ghz AP 
+
+
+# write by espressif
+
+## _UART Echo Example_
 
 _This is an example which echoes any data it receives on UART0 back to the sender._
 
