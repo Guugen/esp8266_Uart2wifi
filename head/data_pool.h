@@ -23,7 +23,7 @@ typedef struct data_pool{
  *         data_pool* 初始化成功，返回一个data_pool指针
  *
  * */
-data_pool* data_pool_init(int l);
+_Bool data_pool_init(int l, data_pool *Ptr);
 
 
 
