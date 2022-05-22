@@ -5,8 +5,8 @@
 #include "../head/data_pool.h"
 
 
-_Bool data_pool_init(int l, data_pool *Ptr){
-    Ptr->poolPtr = (int*)malloc(l*sizeof(int)); //分配l个int大小的内存空间
+_Bool Data_pool_init(int l, Data_pool *Ptr){
+    Ptr->poolPtr = (DATATYPE*)malloc(l*sizeof(DATATYPE)); //分配l个DATATYPE大小的内存空间
     /*分配成功，初始化data_pool*/
     if(Ptr->poolPtr){
         Ptr->length = l;

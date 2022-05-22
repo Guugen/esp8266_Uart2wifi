@@ -7,23 +7,26 @@
 #ifndef DATA_POOL_DATA_POOL_H
 #define DATA_POOL_DATA_POOL_H
 
-typedef struct data_pool{
-    int length;
-    int last;
-    int* poolPtr;
+#define DATATYPE uint8_t  
 
-}data_pool;
+typedef struct Data_pool{
+    uint8_t length;
+    uint8_t last;
+    DATATYPE* poolPtr;
+
+}Data_pool;
 
 /*
  * @brief 初始化一个data_pool
  * 
  * @parameter l data_pool的深度
+ * @parameter Ptr a pointer to data_pool
  *
  * @return NULL 初始化失败，没有满足深度的连续内存空间
  *         data_pool* 初始化成功，返回一个data_pool指针
  *
  * */
-_Bool data_pool_init(int l, data_pool *Ptr);
+_Bool Data_pool_init(int l, Data_pool *Ptr);
 
 
 
