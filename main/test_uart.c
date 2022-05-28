@@ -1,17 +1,7 @@
+#include "../head/uart.h"
 
-#include <stdio.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "esp_system.h"
-#include "esp_spi_flash.h"
-#include "driver/uart.h"
-
-
-#define BUF_SIZE (1024)
-
-static void echo_task()
+void uart_init()
 {
-
     int32_t stuation = 0;	//stuation of function
     
     
@@ -33,21 +23,5 @@ static void echo_task()
     stuation = uart_driver_install(UART_NUM_0, BUF_SIZE * 2, 0, 0, NULL, 0);
     printf("uart_install's esp_err_t is %x\n", stuation);
     
-    
-/***Configure a temporary buffer for the incoming data***/
-    uint8_t *data = (uint8_t *) malloc(BUF_SIZE);
-
-    while (1) {
-        // Read data from the UART
-        int len = uart_read_bytes(UART_NUM_0, data, BUF_SIZE, 20 / portTICK_RATE_MS);
-        // Write data back to the UART
-        uart_write_bytes(UART_NUM_0, (const char *) data, len);
-    }
 }
 
-
-/*void app_main()
-{
-     xTaskCreate(echo_task, "uart_echo_task", 1024, NULL, 10, NULL);
-}
-*/
