@@ -8,8 +8,20 @@
 */
 #include "../head/station.h"
 
+/* FreeRTOS event group to signal when we are connected*/
+static EventGroupHandle_t s_wifi_event_group;
 
-static void event_handler(void* arg, esp_event_base_t event_base,
+/* The event group allows multiple bits for each event, but we only care about two events:
+ * - we are connected to the AP with an IP
+ * - we failed to connect after the maximum amount of retries */
+#define WIFI_CONNECTED_BIT BIT0
+#define WIFI_FAIL_BIT      BIT1
+char *TAG = "wifi station";
+
+static int s_retry_num = 0;
+
+
+void event_handler(void* arg, esp_event_base_t event_base,
                                 int32_t event_id, void* event_data)
 {
     if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
@@ -92,10 +104,3 @@ void wifi_init_sta(void)
     vEventGroupDelete(s_wifi_event_group);
 }
 
-/*void app_main()
-{
-    ESP_ERROR_CHECK(nvs_flash_init());
-
-    ESP_LOGI(TAG, "ESP_WIFI_MODE_STA");
-    wifi_init_sta();
-}*/
