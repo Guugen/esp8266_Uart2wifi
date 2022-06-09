@@ -1,3 +1,6 @@
+# BUG ATTENTION
+esp8266 will restart if there is no message to be sent for a long time.
+
 # write by guugen
 esp8266 wifi station can not connect 5.0Ghz AP 
 
