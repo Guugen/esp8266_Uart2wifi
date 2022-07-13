@@ -1,9 +1,12 @@
 # BUG ATTENTION
 esp8266 will restart if there is no message to be sent for a long time.
 
+This device didn't cancle the log output.
+
 # write by guugen
 esp8266 wifi station can not connect 5.0Ghz AP 
 
+can only pass the string data
 
 # write by espressif
 
